@@ -1,15 +1,13 @@
-// function makeResponsive() {
-
 // Define SVG area dimensions
 var svgWidth = 960;
 var svgHeight = 500;
 
 // Define the chart's margins as an object
 var chartMargin = {
-    top: 30,
-    right: 30,
-    bottom: 30,
-    left: 30
+    top: 20,
+    right: 40,
+    bottom: 80,
+    left: 100
 };
 
 // Define dimensions of the chart area
@@ -20,23 +18,18 @@ var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 var svg = d3.select("#scatter")
     .append("svg")
     .attr("height", svgHeight)
-    .attr("width", svgWidth)
-    .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
-
+    .attr("width", svgWidth);
+    
 
 // Append a group to the SVG area and shift ('translate') it to the right and down to adhere
 // to the margins set in the "chartMargin" object.
-var chartGroup = svg.append("g");
+var chartGroup = svg.append("g")
+    .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
 
-// Append a div to the body to create tooltips, assign it a class
-d3.select(".chartGroup")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
 
 // Load data.csv
 d3.csv("assets/data/data.csv").then(function (error, healthData) {
-    if (error) return console.log(error);
+    if (error) throw error;
 
     healthData.forEach(function (data) {
         data.poverty = +data.poverty;
@@ -97,13 +90,9 @@ d3.csv("assets/data/data.csv").then(function (error, healthData) {
         .attr("x", 0 - (height / 2))
         .attr("text-anchor", "middle")
         .text("Lacks Healtcare(%)");
-}).catch(function (error) {
-    console.log(error);
 });
-// };
-// makeResponsive();
-// When the browser window is resized, makeResponsive() is called.
-d3.select(window).on("resize", makeResponsive);
+
+
 
 
         // Step 6: Initialize tool tip

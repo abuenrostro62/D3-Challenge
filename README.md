@@ -6,16 +6,16 @@ Using D3, a scatter plot between two of the data variables, Healthcare vs. Pover
 Code for this graphic was in an app.js file and data was pulled from data.csv by using the d3.csv function. Python -m http.server was used to run the visualization. This hosted the page at localhost:8000 in my web browser.
 
 Here is an image of the scatter plot.
-Reference-style: 
-![alt text][logo]
+
+
 
 [logo]:
+![alt text](Scatter plot.png "Logo Title Text 1")
 
 
 
-
-
-
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
 
 
 
